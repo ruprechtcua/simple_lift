@@ -1,0 +1,4 @@
+com/ruprecht/model/Person.class
+com/ruprecht/model/LiftStatus.class
+com/ruprecht/controller/LiftController.class
+com/ruprecht/dao/LiftStatusDaoImpl.class

@@ -1,15 +1,15 @@
 'use strict';
 
 define(['jquery', 'knockout'], function($, $ko) {
-    return function(floorCount) {
+    return function(id) {
         var self = this,
         	cssMove = 'move',
         	maxLoad = 20;
 
+        this.id = id;
         this.status = $ko.observable('-');
         this.load = $ko.observable(0);
         this.floor = $ko.observable(1);
-        this.floorCount = floorCount;
 
         this.isBusy = $ko.computed(function() {
             if (self.status() !== '-')
