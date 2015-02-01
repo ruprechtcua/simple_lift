@@ -12,6 +12,6 @@ require.config({
 });
 
 require(['controllers/app', 'jquery', 'knockout'], function($App, $, $ko) {
-    window.app = new $App(7, 10);
+    window.app = new $App(4, 10);
     $ko.applyBindings(window.app);
 });

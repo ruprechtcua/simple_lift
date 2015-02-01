@@ -12,9 +12,5 @@ define(['jquery', 'knockout', '../models/lift', '../models/floor'], function($, 
         for (var i = 0; i < liftCount; i++) {
             this.lifts.push(new $lift(floorCount));
         }
-
-        
-
-
     };
 });

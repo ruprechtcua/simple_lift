@@ -3,11 +3,6 @@
 define(['jquery', 'knockout'], function($, $ko) {
     return function(floorNumber) {
     	var self = this;
-
-
-        this.queue = $ko.observable(0);
-        this.destination = $ko.observable(0);
-
         this.floor = floorNumber;
         
         this.requestLoad = $ko.observable(0);
@@ -40,6 +35,11 @@ define(['jquery', 'knockout'], function($, $ko) {
         	}
 
         	//trigger lift job
+        	if(!closestLift){
+        		//all lifts are busy.
+        		return;
+        	}
+
         	if(self.requestLoad() > 20){
         		self.requestLoad(self.requestLoad()-20);
         		closestLift.newJob(self.floor, self.requestDestination().floor, 20);

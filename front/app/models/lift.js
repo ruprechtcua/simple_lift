@@ -2,7 +2,10 @@
 
 define(['jquery', 'knockout'], function($, $ko) {
     return function(floorCount) {
-        var self = this;
+        var self = this,
+        	cssMove = 'move',
+        	maxLoad = 20;
+
         this.status = $ko.observable('-');
         this.load = $ko.observable(0);
         this.floor = $ko.observable(1);
@@ -15,7 +18,7 @@ define(['jquery', 'knockout'], function($, $ko) {
         }, this);
 
         this.move = $ko.computed(function() {
-            return 'move' + self.floor();
+            return cssMove + self.floor();
         }, this);
 
         this.newJob = function(fetchFrom, goTo, withLoad) {
@@ -23,7 +26,7 @@ define(['jquery', 'knockout'], function($, $ko) {
 
             fetch(fetchFrom);
 
-            //delay for animation purposes.
+            //delay for animation purposes
             setTimeout(function() {
                 load(withLoad);
 
@@ -36,8 +39,6 @@ define(['jquery', 'knockout'], function($, $ko) {
                 }, 1000); //bring to destination
             }, 1000); //load people
         };
-
-        
 
         function fetch(fetchFrom) {
             if (self.floor() > fetchFrom) {
