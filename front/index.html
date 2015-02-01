@@ -1,15 +1,40 @@
 <!Doctype html>
 <html>
-<head>
-  <meta charset="utf-8">
-  <title>simple lift</title>
-  <script data-main="app/config" src="bower_components/requirejs/require.js"></script>
-</head>
-<body>
-  <h1>lift running!</h1>
-  <div>
-      Data Binding: 
-      <span class="status" data-bind="text: app.status">Inactive</span>
-  </div>
-</body>
+	<head>
+		<meta charset="utf-8">
+		<title>Simple Elevator using KnockOutJS</title>
+		<link rel="stylesheet" type="text/css" href="app/styles/base.css">
+		<link rel="stylesheet" type="text/css" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css">
+		<script data-main="app/config" src="bower_components/requirejs/require.js"></script>
+	</head>
+	<body>
+		<div>Simple Elevator Implementation</div>
+		<p>asd</p>
+		<div class="box">
+			<div class="" style="float:left" data-bind="foreach: app.floors">
+				<div class="floor-container">
+					<span data-bind='text: floor'></span>
+					<input data-bind="value: requestLoad" type='text' style="width:20px"></input>
+					
+					<select data-bind="options: app.floors,
+						optionsText: 'floor',
+						value: requestDestination,
+						optionsCaption: 'go to'">
+					</select>
+					<button data-bind="click: requestLift">go</button>
+					
+				</div>
+			</div>
+			<div class="float:left">
+				<div style="float:left" data-bind="foreach: app.lifts">
+					<div class="lift-shaft" data-bind="style: { height: (app.floors.length * 40) + 'px' }">
+						<div class="lift" data-bind="css: move">
+						<span data-bind='text: load'></span>
+							<span data-bind='text: status'></span>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</body>
 </html>

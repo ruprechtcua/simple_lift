@@ -1,0 +1,58 @@
+.box{
+	left:10px;
+	margin: 0 auto;
+}
+
+.floor-container{
+	height: 40px;
+	width: 200px;
+	border-right: solid 1px grey;
+}
+
+.lift-shaft{
+	border-right: solid 1px grey;
+	width:40px;
+	float:left;
+
+}
+
+.lift-shaft .lift{
+	background-color:red;
+	top:360px;
+	height:40px;
+	width:40px;
+	position:relative;
+	transition: all 1s ease;
+}
+
+.lift-shaft .lift.move1{
+	top:360px;
+}
+.lift-shaft .lift.move2{
+	top:320px;
+}
+.lift-shaft .lift.move3{
+	top:280px;
+}
+.lift-shaft .lift.move4{
+	top:240px;
+}
+.lift-shaft .lift.move5{
+	top:200px;
+}
+.lift-shaft .lift.move6{
+	top:160px;
+}
+.lift-shaft .lift.move7{
+	top:120px;
+}
+.lift-shaft .lift.move8{
+	top:80px;
+}
+.lift-shaft .lift.move9{
+	top:40px;
+}
+.lift-shaft .lift.move10{
+	top:0px;
+}
+
