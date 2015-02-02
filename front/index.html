@@ -5,16 +5,16 @@
 		<title>Simple Elevator using KnockOutJS</title>
 		<link rel="stylesheet" type="text/css" href="app/styles/base.css">
 		<link rel="stylesheet" type="text/css" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css">
+		<link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">
 		<script data-main="app/config" src="bower_components/requirejs/require.js"></script>
 	</head>
 	<body>
-		<div>Simple Elevator Implementation</div>
-		<p>asd</p>
+		
 		<div class="box">
 			<div class="" style="float:left" data-bind="foreach: app.floors">
 				<div class="floor-container">
-					<span data-bind='text: floor'></span>
-					<input data-bind="value: requestLoad" type='text' style="width:20px"></input>
+					<span class="small">level </span><span data-bind='text: floor' class="small"></span><br/>
+					<input data-bind="value: requestLoad" type='text' style="width:30px"></input>
 					
 					<select data-bind="options: app.floors,
 						optionsText: 'floor',
@@ -25,15 +25,29 @@
 					
 				</div>
 			</div>
-			<div class="float:left">
-				<div style="float:left" data-bind="foreach: app.lifts">
-					<div class="lift-shaft" data-bind="style: { height: (app.floors.length * 40) + 'px' }">
-						<div class="lift" data-bind="css: move">
-						<span data-bind='text: load'></span>
-							<span data-bind='text: status'></span>
+				<div class="lifts-container" data-bind="foreach: app.lifts">
+					<div class="lift-shaft" data-bind="style: { height: (app.floors.length * 60) + 'px' }">
+						<div class="lift" data-bind="css: move, style: { backgroundColor: isBusy() ? 'red' : 'black' }">
+							<span data-bind='text: load'></span>
+							<!-- ko if: status() === 'up' -->
+							<i class="fa fa-angle-up"></i>
+							<!-- /ko -->
+							<!-- ko if: status() === '-' -->
+							<span>-</span>
+							<!-- /ko -->
+							
+							<!-- ko if: status() === 'down' -->
+							<i class="fa fa-angle-down"></i>
+							<!-- /ko -->
 						</div>
 					</div>
 				</div>
+			<div class="description">
+				<div>Simple but smart elevator</div>
+				<ul><li>elevator turns busy (red)</li><li>load of more than 20 will require 2 or more elevators</li><li>css animations for idle, fetch, load, bring, unload</li><li>closest free (not busy) elevator fetches</li><li>busy elevator turns red while idle turns black</li>
+				<li>Status logging made simple: 0- | 0 up | 0 down | 12 load </li>
+				<li>addition logging for loading people into the elevator</li>
+				<li>If back end server is up, query http://localhost:8080/status/{id} for status history id=0 for A (1st lift), id=1 for B (2nd lift), and so on</li>
 			</div>
 		</div>
 	</body>

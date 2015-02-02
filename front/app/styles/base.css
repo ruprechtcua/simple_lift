@@ -1,56 +1,65 @@
+.description {
+	float:left;
+	width:250px;
+	margin:15px;
+}
 .box{
-	left:10px;
-	margin: 0 auto;
+	margin:20px;
 }
 
 .floor-container{
-	height: 40px;
+	height: 60px;
 	width: 200px;
 	border-right: solid 1px grey;
 }
 
+.lifts-container{
+	float:left;
+}
+
 .lift-shaft{
 	border-right: solid 1px grey;
-	width:40px;
+	width:60px;
 	float:left;
 
 }
 
 .lift-shaft .lift{
-	background-color:red;
+	background-color:#000;
+	color:#FFF;
 	top:360px;
-	height:40px;
-	width:40px;
+	height:60px;
+	width:60px;
 	position:relative;
 	transition: all 1s ease;
 }
 
 .lift-shaft .lift.move1{
-	top:360px;
+	top:540px;
 }
 .lift-shaft .lift.move2{
-	top:320px;
+	top:480px;
 }
 .lift-shaft .lift.move3{
-	top:280px;
+	top:420px;
 }
 .lift-shaft .lift.move4{
-	top:240px;
+	top:360px;
 }
 .lift-shaft .lift.move5{
-	top:200px;
+	top:300px;
 }
 .lift-shaft .lift.move6{
-	top:160px;
+	top:240px;
 }
 .lift-shaft .lift.move7{
-	top:120px;
+	top:180px;
 }
 .lift-shaft .lift.move8{
-	top:80px;
+	top:120px;
 }
 .lift-shaft .lift.move9{
-	top:40px;
+	top:60px;
 }
 .lift-shaft .lift.move10{
 	top:0px;

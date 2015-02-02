@@ -1,6 +1,6 @@
 'use strict';
 
-define(['jquery', 'knockout'], function($, $ko) {
+define(['jquery', 'knockout', '../service/api'], function($, $ko, $api) {
     return function(id) {
         var self = this,
         	cssMove = 'move',
@@ -24,11 +24,14 @@ define(['jquery', 'knockout'], function($, $ko) {
         this.newJob = function(fetchFrom, goTo, withLoad) {
             console.log('fetching from: floor-' + fetchFrom + ' | ' + 'going to : floor-' + goTo + ' | ' + 'with ' + withLoad + ' people');
 
-            fetch(fetchFrom);
-
+            if(self.floor() != fetchFrom){
+                fetch(fetchFrom);
+            }
             //delay for animation purposes
             setTimeout(function() {
+                
                 load(withLoad);
+                
 
                 setTimeout(function() {
                     bring(goTo);
@@ -50,6 +53,8 @@ define(['jquery', 'knockout'], function($, $ko) {
             self.floor(fetchFrom);
 
             //send status to server
+            $api.sendStatusByLiftId(self.id, self.status(), self.load());
+
         };
 
         function load(withLoad) {
@@ -57,6 +62,7 @@ define(['jquery', 'knockout'], function($, $ko) {
             self.status('load');
 
             //send status to server
+            $api.sendStatusByLiftId(self.id, self.status(), self.load());
         };
 
         function bring(goTo) {
@@ -69,6 +75,7 @@ define(['jquery', 'knockout'], function($, $ko) {
             self.floor(goTo);
 
             //send status to server
+            $api.sendStatusByLiftId(self.id, self.status(), self.load());
         };
 
         function unload() {
@@ -76,6 +83,7 @@ define(['jquery', 'knockout'], function($, $ko) {
             self.load(0);
 
             //send status to server
+            $api.sendStatusByLiftId(self.id, self.status(), self.load());
         };
     };
 });

@@ -14,7 +14,7 @@ define(['jquery', 'knockout'], function($, $ko) {
         	}
 
         	var closestLift, 
-        		closestDiff;
+        		closestDiff = -1;
 
         	for(var i = 0, length = app.lifts.length; i < length; i++){
         		if(app.lifts[i].isBusy()){
@@ -23,7 +23,7 @@ define(['jquery', 'knockout'], function($, $ko) {
         		var lift = app.lifts[i],
         			diff = Math.abs(self.floor - app.lifts[i].floor());
 
-        		if(!closestDiff){
+        		if(closestDiff === -1){
         			closestDiff = diff;
         			closestLift = lift;
         		}else{
@@ -49,7 +49,9 @@ define(['jquery', 'knockout'], function($, $ko) {
         			},1000);
         		}
         	}else{
+
         		closestLift.newJob(self.floor, self.requestDestination().floor, self.requestLoad());
+        		self.requestLoad(0);
         	}
         	
         };
