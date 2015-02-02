@@ -1,13 +1,6 @@
 # Simple but smart elevator
 
-* elevator turns busy (red)
-* load of more than 20 will require 2 or more elevators
-* css animations for idle, fetch, load, bring, unload
-* closest free (not busy) elevator fetches
-* busy elevator turns red while idle turns black
-* Status logging made simple: 0- | 0 up | 0 down | 12 load
-* addition logging for loading people into the elevator
-* If back end server is up, query http://localhost:8080/status/{id} for status history id=0 for A (1st lift), id=1 for B (2nd lift), and so on
+![alt tag](https://raw.githubusercontent.com/ruprechtcua/simple_lift/master/scrn.png)
 
 ## Getting Started
 
